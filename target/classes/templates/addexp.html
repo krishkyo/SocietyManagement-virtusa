@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#"><img src="/images/virtusa-logo.png" style="height:40px;width:140px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/welcome"><i class="fa fa-code-fork"></i> Dashboard<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/expense"><i class="fa fa-money"></i> Wallet<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+</header>
+
+
+<div class="container">
+		<div class="page-header">
+		<br>
+		<br>
+		<br>
+		<h1>Add Expenses</h1>
+		<p class="lead">Enter the credentials</p>
+		</div>
+<form action="/adding" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Reason of expense</label>
+    <input type="text" class="form-control" name="reason" placeholder="Enter Reason" required>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Enter Amount</label>
+    <input type="text" class="form-control" name="amount" placeholder="Enter name" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+</body>
+</html>

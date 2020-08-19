@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboard</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      
+      }
+      .btn-warning{
+      margin-right:20px;
+     
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/carousel.css">
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#"><img src="/images/virtusa-logo.png" style="height:40px;width:140px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/welcome"><i class="fa fa-code-fork"></i> Dashboard<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/expense"><i class="fa fa-money"></i> Wallet<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+</header>
+
+
+
+<div class="container-wrapper">
+	<div class="container">
+		<div class="page-header">
+		<br>
+		<br>
+		<br>
+		<h1>Manage People</h1>
+		<p class="lead">This month details</p>
+		</div>
+		<table class="table table-stripped table-hover">
+			<thead>
+				<tr class="bg-primary" style="text-align:center">
+					<th>Name</th>
+					<th>Email</th>
+					<th>Door.No</th>
+					<th></th>
+					
+				</tr>
+			</thead>
+		
+			<th:block th:each="p : ${product}">
+			<tr style="text-align:center">
+				<td th:text=${p.name}></td>
+				<td th:text=${p.email}></td>
+				<td th:text=${p.doorNo}></td>
+				
+				<td><a th:href="@{'deleteUser/'+${p.doorNo}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+			</tr>
+			</th:block>
+		</table>
+		<a href="addUser" class="btn btn-info"><i class="fa fa-plus"></i> Add Member</a>
+   		<a href="/addExp" class="btn btn-danger"><i class="fa fa-inr"></i> Add Expenses</a>
+   		<hr class="featurette-divider">
+   		<div class="page-header">
+		<br>
+		<br>
+		<br>
+		<h1>Need to Pay</h1>
+		<p class="lead">This month details</p>
+		</div>
+   		<table class="table table-stripped table-hover">
+			<thead>
+				<tr class="bg-danger" style="text-align:center">
+					<th>Name</th>
+					<th>Email</th>
+					<th>Door.No</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+		
+			<th:block th:each="p : ${default}">
+			<tr style="text-align:center">
+				<td th:text=${p.name}></td>
+				<td th:text=${p.email}></td>
+				<td th:text=${p.doorNo}></td>
+				<td th:text=${p.status}></td>
+				<td><a th:href="@{'/sentMail/'+${p.doorNo}}" class="btn btn-info">Sent Mail</a></td>
+				<td><a th:href="@{'/updateStatus/'+${p.doorNo}}" class="btn btn-success">Paid</a></td>
+				<td><a th:href="@{'/updateStatusFine/'+${p.doorNo}}" class="btn btn-danger">Paid with penalty</a></td>
+			</tr>
+			</th:block>
+		</table>
+   		
+   		<hr class="featurette-divider">
+   		<div class="page-header">
+		<br>
+		<br>
+		<br>
+		<h1>Paid</h1>
+		<p class="lead">This month details</p>
+		</div>
+   		<table class="table table-stripped table-hover">
+			<thead>
+				<tr class="bg-success" style="text-align:center">
+					<th>Name</th>
+					<th>Email</th>
+					<th>Door.No</th>
+					<th>Status</th>
+					
+				</tr>
+			</thead>
+		
+			<th:block th:each="paid : ${paid}">
+			<tr style="text-align:center">
+				<td th:text=${paid.name}></td>
+				<td th:text=${paid.email}></td>
+				<td th:text=${paid.doorNo}></td>
+				<td th:text=${paid.status}></td>
+					
+			</tr>
+			</th:block>
+		</table>
+		<br>
+   		<a href="/reset" class="btn btn-warning"><i class="fa fa-refresh"></i> Reset</a>
+   		<a href="/addmonth" class="btn btn-success"><i class="fa fa-upload"></i> Upload</a>
+  	<hr class="featurette-divider">
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2020 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
